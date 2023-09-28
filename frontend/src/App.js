@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import "./App.css";
-import { Menu } from 'antd';
-import {Route, Routes, useNavigate} from "react-router-dom";
-import { HomeOutlined, InfoOutlined, CheckOutlined } from "@ant-design/icons";
-//import "antd/dist/antd.css"
+import SideMenu from './components/SideMenu';
 
 function App() {
-  
   const [currentTime, setCurrentTime] = useState(0);
-
   useEffect(() => {
     fetch('/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
@@ -24,8 +19,6 @@ function App() {
      <p>The current time is {currentTime}.</p> 
      <Footer/>
     </div>
-        
-    
   );
 }
 
@@ -54,34 +47,5 @@ function Footer(){ //Testing
       Footer
       </div>
 }
-
-function SideMenu(){
-  const navigate = useNavigate()
-  return <div style={{ display: 'flex', flexDirection:"row"}}>
-      <Menu
-      onClick = {({key}) =>{navigate(key)}} 
-      defaultSelectedKeys={window.location.pathname}
-      items= {
-        [{label: 'Home', key:"/", icon : <HomeOutlined/>}, 
-        {label: 'About', key:"/about", icon : <InfoOutlined/>}, //Temporary use as home page; change to moving centre later
-        {label: 'Checksum', key:"/checksum", icon: <CheckOutlined/>}]} //Temporary use as home page; change to moving centre later
-        > 
-      </Menu>
-      <div>
-        <Content/>
-        </div>
-    </div>
-}
-
-function Content(){
-  return <div>
-    <Routes>
-      <Route path = "/" element={<div>Home</div>}></Route>
-      <Route path = "/about" element={<div>About</div>}></Route>
-      <Route path = "/checksum" element={<div>Checksum</div>}></Route> 
-    </Routes>
-  </div> //Becareful of checksum might re-direct to wrong page
-}
-
 
 export default App
