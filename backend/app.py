@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 import hashlib
 import time
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/time')
 def get_current_time():
@@ -36,6 +37,7 @@ def compare_files():
 
     # Compare the checksums and respond
     are_files_identical = checksum1 == checksum2
+    print(f"Are files identical? {are_files_identical}")
     return jsonify({
         'checksum1': checksum1,
         'checksum2': checksum2,
