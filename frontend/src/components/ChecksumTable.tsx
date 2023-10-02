@@ -27,8 +27,8 @@ const App: React.FC<ChecksumTableProps> = ({ dataSource, areFilesSame }) => {
 
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} />
-      <Typography.Text strong>
+      <Table dataSource={dataSource} columns={columns} pagination={false} style={{ marginBottom: '25px' }} />
+      <Typography.Text strong >
         {"Are the files same? : "} {areFilesSame ? 'True' : 'False'}
       </Typography.Text>
     </div>
