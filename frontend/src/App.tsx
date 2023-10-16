@@ -34,7 +34,7 @@ function Header(){ // Testing
     justifyContent: 'center', 
     alignItems: "center",
     fontWeight :"bold"}}>
-      Vertex AI Assignment
+      Vertex Assignment
       </div>
 }
 
