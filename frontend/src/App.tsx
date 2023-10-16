@@ -1,5 +1,4 @@
-//import React, {useState, useEffect} from 'react'
-import SideMenu from './components/SideMenu';
+import FileUpload from './components/FileUpload';
 import './App.css';
 
 function App() {
@@ -15,9 +14,17 @@ function App() {
   return (
     <div style={{display: "flex", flexDirection: "column", flex: 1, height:"100vh"}}>
       <Header/>
-      <div style={{display: "flex", flexDirection: "row", flex: 10}}>
-        <SideMenu/>
-      </div>
+      <div 
+          style={{flex: 1,
+                  display: 'grid',
+                  justifyContent: 'center',
+                  placeItems: 'center', 
+                  height: '60vh',
+                  fontSize: '20px'
+                  }}>
+          Upload files to check their similarity
+          <FileUpload/>
+        </div>
      <Footer/>
     </div> //TODO: Pending formating of API display <p>The current time is {currentTime}.</p> 
   );
@@ -49,7 +56,7 @@ function Footer(){ //Testing
     justifyContent: 'center', 
     alignItems: "center",
     fontWeight :"bold"}}>
-      This is the end of the page
+      Vertex Assignment
       </div>
 }
 
