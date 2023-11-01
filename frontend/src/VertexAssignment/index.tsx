@@ -1,28 +1,20 @@
+import React from "react";
+import './index.module.css';
 import FileUpload from './components/FileUpload';
-import './App.css';
 
-function App() {
-
-  /*
-  const [currentTime, setCurrentTime] = useState(0);
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
-  */
+function VertexAssignment() {
   return (
-    <div style={{display: "flex", flexDirection: "column", flex: 1, height:"100vh"}}>
+    <div style={{display: "flex", flexDirection: "column", height:"100vh"}}>
       <Header/>
       <div 
-          style={{flex: 1,
+          style={{
                   display: 'grid',
                   justifyContent: 'center',
                   placeItems: 'center', 
-                  height: '60vh',
+                  height: '100vh',
                   fontSize: '20px'
                   }}>
-          Upload files to check their similarity
+          Upload filesss to check their similarity
           <FileUpload/>
         </div>
      <Footer/>
@@ -60,4 +52,4 @@ function Footer(){ //Testing
       </div>
 }
 
-export default App;
+export default VertexAssignment;

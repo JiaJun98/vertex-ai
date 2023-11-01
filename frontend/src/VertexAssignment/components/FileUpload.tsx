@@ -2,10 +2,12 @@ import React,  { useState } from 'react';
 import { Space, Upload, Button, message } from 'antd';
 import { UploadOutlined, CloseOutlined } from '@ant-design/icons';
 import ChecksumTable from './ChecksumTable';
+//import { IP } from '../../../utils/api-ip'; //Additional
 import axios from 'axios';
 
 const App: React.FC = () => {
-  const backendURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:80';
+  const backendURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:80'; //OLD IP
+  //const contactUrl = `${IP}/checksum-routetapi`; //NEW IP //i.e const ldaUrl = `${IP}/tm-routetoapi`;
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [apiResponse, setApiResponse] = useState<any | null>(null);
   const [fileList, setFileList] = useState([]);
@@ -24,11 +26,17 @@ const App: React.FC = () => {
       setUploadedFiles([fileList[0].name, fileList[1].name]);
     }
 
+    //Slightly altered to fit the backend framework
+    const checksumVarsDict = {
+      type: 'upload',
+    };
+
     const formData = new FormData();
     formData.append('file1', fileList[0]);
     formData.append('file2', fileList[1]);
+    formData.append('type', checksumVarsDict.type);
     try {
-      const res = await axios.post(`${backendURL}/checksum`, formData);
+      const res = await axios.post(`${backendURL}`, formData); //Old URL was `${backendURL}/checksum`
       if (res.data) {
         setApiResponse(res.data);
       }
@@ -53,7 +61,7 @@ const App: React.FC = () => {
 
 
   return (
-    <Space direction="vertical" style={{alignItems: 'center', justifyContent: 'center', marginLeft: '100px', width: '50%' }} size="large">
+    <Space direction="vertical" style={{alignItems: 'center', justifyContent: 'center', marginLeft: '60px', width: '50%' }} size="large">
       <Upload
         listType="picture"
         maxCount={2}
